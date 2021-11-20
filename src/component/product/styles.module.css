@@ -1,0 +1,29 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    display: inline;
+}
+
+.image {
+    width: 200px;
+    height: 100px;
+}
+
+.name {
+    font-size: 0.8rem;
+    text-align: start;
+}
+
+.price {
+    display: flex;
+    justify-content: start;
+    font-size: 0.8rem;
+}
+
+.mrpPrice {
+    font-size: 0.7rem;
+    text-decoration: line-through;
+    opacity: 0.7;
+    padding-left: 1rem;
+}
