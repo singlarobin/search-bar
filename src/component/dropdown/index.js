@@ -7,6 +7,8 @@ const DropDown = props => {
 
     const handleMouseOver = e => handleProductChange(e.target.innerText);
 
+    const handleButtonClick = () => alert('Button functionality Not implemented!!');
+
     return <div className={classes.container}>
         <div className={classes.leftContainer}>
             <div>
@@ -35,6 +37,9 @@ const DropDown = props => {
                 ) : null}
 
             </div>
+            {/* <div> */}
+                <button className={classes.button} onClick={handleButtonClick}>View All Search Results</button>
+            {/* </div> */}
 
         </div>
     </div>;

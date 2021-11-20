@@ -3,6 +3,12 @@
     flex-direction: column;
     width: 200px;
     display: inline;
+    transform: scale(1);
+    transition: transform 0.25s;
+}
+
+.container:hover {
+    transform: scale(1.1);
 }
 
 .image {
@@ -13,6 +19,9 @@
 .name {
     font-size: 0.8rem;
     text-align: start;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 .price {

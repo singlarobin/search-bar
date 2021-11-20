@@ -34,7 +34,7 @@ const Main = () => {
             setTopSuggestions(json.suggestions);
             setTopCollections(json.sfacets.collectionname);
             setResults(json.results);
-            setProduct(json.suggestions !== 0 ? json.suggestions[0].suggestion : '');
+            setProduct(json.suggestions.length !== 0 ? json.suggestions[0].suggestion : '');
             setErrorMessage('');
         }
     };
@@ -52,7 +52,6 @@ const Main = () => {
     };
 
     const handleProductChange = async (value) => {
-        console.log('product:', value);
         setProduct(value);
         //call API for results
         const params = '&size=6&suggestions=1&maxSuggestions=6';
@@ -64,7 +63,6 @@ const Main = () => {
         }
         else {
             let json = await response.json();
-            console.log('json:', json);
             setResults(json.results);
             setErrorMessage('');
         }

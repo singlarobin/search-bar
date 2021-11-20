@@ -1,3 +1,18 @@
 .container {
     margin: 2rem auto;
 }
+
+.errorContainer {
+    width: 70vw;
+    max-width: 560px;
+    height: 60vh;
+    max-height: 400px;
+    padding: 1rem;
+    margin: 0rem auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f0f0;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+}
