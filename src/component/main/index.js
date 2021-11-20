@@ -3,6 +3,7 @@ import Search from '../search';
 import classes from './style.module.css';
 import { URL } from '../../utils/constant';
 import DropDown from '../dropdown';
+import { isEmptyString } from '../../utils';
 
 const Main = () => {
     const [searchInput, setSearchInput] = useState('');
@@ -11,22 +12,21 @@ const Main = () => {
     const [topCollections, setTopCollections] = useState([]);
     const [results, setResults] = useState([]);
     const [product, setProduct] = useState('');
+    const [errorMessage, setErrorMessage] = useState('');
 
 
     const handleSearchInput = value => {
         setSearchInput(value);
-        debounce(actualApiCall)();
+        debounce(actualApiCall)(value);
     }
 
-    // const callAPI = () => console.log(searchInput);
-
-    const actualApiCall = async () => {
+    const actualApiCall = async (searchValue) => {
         const params = '&size=6&suggestions=1&maxSuggestions=6';
-        const url = URL + searchInput + params;
+        const url = URL + searchValue + params;
         let response = await fetch(url);
 
         if (!response.ok) {
-            console.log('error');
+            setErrorMessage('Not Found!');
         }
         else {
             let json = await response.json();
@@ -35,19 +35,17 @@ const Main = () => {
             setTopCollections(json.sfacets.collectionname);
             setResults(json.results);
             setProduct(json.suggestions !== 0 ? json.suggestions[0].suggestion : '');
+            setErrorMessage('');
         }
     };
 
     const debounce = (callbackFxn, delay = 2000) => {
-        // let timer;
-        return function () {
-            console.log('timer:', timer);
+        return function (value) {
             clearTimeout(timer);
             const context = this;
             const args = arguments;
-
             let t = setTimeout(() => {
-                callbackFxn.apply(context, [args]);
+                callbackFxn.apply(context, [value, args]);
             }, delay);
             setTimer(t);
         }
@@ -62,20 +60,24 @@ const Main = () => {
         let response = await fetch(url);
 
         if (!response.ok) {
-            console.log('error');
+            setErrorMessage('Not Found!');
         }
         else {
             let json = await response.json();
             console.log('json:', json);
             setResults(json.results);
+            setErrorMessage('');
         }
     }
 
     return <div className={classes.container} >
         <Search inputValue={searchInput} handleInputChange={handleSearchInput} />
-        {results.length !== 0 ? <DropDown suggestions={topSuggestions} collections={topCollections}
-            results={results} product={product} handleProductChange={handleProductChange} />
-            : null}
+        {isEmptyString(errorMessage) ?
+            results.length !== 0 ? <DropDown suggestions={topSuggestions} collections={topCollections}
+                results={results} product={product} handleProductChange={handleProductChange} />
+                : null
+            : <div className={classes.errorContainer}>{errorMessage}</div>}
+
     </div>;
 };
 
