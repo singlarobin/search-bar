@@ -28,6 +28,7 @@
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
+    color:#474747;
 }
 
 .listItem:hover {
@@ -44,7 +45,7 @@
     display: grid;
     grid-gap: 1rem;
     padding: 0.5rem;
-    grid-template-columns: repeat(3, 200px);
+    grid-template-columns: repeat(3, 180px);
 }
 
 .button {

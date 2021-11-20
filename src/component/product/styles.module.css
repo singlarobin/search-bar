@@ -1,7 +1,7 @@
 .container {
     display: flex;
     flex-direction: column;
-    width: 200px;
+    width: 180px;
     display: inline;
     transform: scale(1);
     transition: transform 0.25s;
@@ -12,8 +12,8 @@
 }
 
 .image {
-    width: 200px;
-    height: 100px;
+    width: 180px;
+    height: 110px;
 }
 
 .name {
