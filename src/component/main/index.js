@@ -3,7 +3,7 @@ import Search from '../search';
 import classes from './style.module.css';
 import { URL } from '../../utils/constant';
 import DropDown from '../dropdown';
-import { isEmptyString } from '../../utils';
+import { isEmptyString, isEmptyObject } from '../../utils';
 
 const Main = () => {
     const [searchInput, setSearchInput] = useState('');
@@ -30,16 +30,15 @@ const Main = () => {
         }
         else {
             let json = await response.json();
-            console.log('json:', json);
             setTopSuggestions(json.suggestions);
-            setTopCollections(json.sfacets.collectionname);
+            setTopCollections(json.sfacets?.collectionname);
             setResults(json.results);
             setProduct(json.suggestions.length !== 0 ? json.suggestions[0].suggestion : '');
-            setErrorMessage('');
+            setErrorMessage(json.results.length === 0 ? 'Not Found' : '');
         }
     };
 
-    const debounce = (callbackFxn, delay = 2000) => {
+    const debounce = (callbackFxn, delay = 1000) => {
         return function (value) {
             clearTimeout(timer);
             const context = this;
@@ -71,11 +70,10 @@ const Main = () => {
     return <div className={classes.container} >
         <Search inputValue={searchInput} handleInputChange={handleSearchInput} />
         {isEmptyString(errorMessage) ?
-            results.length !== 0 ? <DropDown suggestions={topSuggestions} collections={topCollections}
+            !isEmptyObject(results) && results.length !== 0 ? <DropDown suggestions={topSuggestions} collections={topCollections}
                 results={results} product={product} handleProductChange={handleProductChange} />
                 : null
             : <div className={classes.errorContainer}>{errorMessage}</div>}
-
     </div>;
 };
 
