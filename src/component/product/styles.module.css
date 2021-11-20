@@ -1,0 +1,38 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 180px;
+    display: inline;
+    transform: scale(1);
+    transition: transform 0.25s;
+}
+
+.container:hover {
+    transform: scale(1.1);
+}
+
+.image {
+    width: 180px;
+    height: 110px;
+}
+
+.name {
+    font-size: 0.8rem;
+    text-align: start;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.price {
+    display: flex;
+    justify-content: start;
+    font-size: 0.8rem;
+}
+
+.mrpPrice {
+    font-size: 0.7rem;
+    text-decoration: line-through;
+    opacity: 0.7;
+    padding-left: 1rem;
+}
