@@ -1,13 +1,28 @@
-.inputText {
+.container {
+    display: flex;
     width: 70vw;
     max-width: 500px;
+    justify-content: space-between;
+    border-radius: 0.5rem;
     padding: 0.5rem;
+    margin: 0rem auto;
+    background-color: rgb(255,255,255);
+}
+
+.inputText {
+    width: 50vw;
+    max-width: 4000px;
+    flex-grow: 1;
     font-size: 1rem;
     outline: none;
-    border-radius: 0.5rem;
+    border: none;    
 }
 
 .inputText::placeholder {
     opacity: 0.5;
     font-size: 1rem;
+}
+
+.icon :hover{
+    cursor: pointer;
 }
