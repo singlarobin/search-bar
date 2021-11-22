@@ -1,95 +1,95 @@
 .wrapper {
-    width: 80vw;
-    max-width: 800px;
-    height: 60vh;
-    max-height: 600px;
-    margin: 0rem auto;
-    border-radius: 0.5rem;
+  width: 80vw;
+  max-width: 800px;
+  height: 65vh;
+  max-height: 600px;
+  margin: 0rem auto;
+  border-radius: 0.5rem;
 }
 
 .container {
-    width: inherit;
-    height: inherit;
-    max-width: 800px;
-    max-height: 600px;
-    padding: 0.5rem;
-    display: flex;
-    background-color: #f0f0f0;
+  width: inherit;
+  height: inherit;
+  max-width: 800px;
+  max-height: 600px;
+  padding: 0.5rem;
+  display: flex;
+  background-color: #f0f0f0;
 }
 
 .leftContainer {
-    flex: 0.25;
-    text-align: start;
+  flex: 0.25;
+  text-align: start;
 }
 
 .rightContainer {
-    flex: 0.75;
-    overflow-y: scroll;
+  flex: 0.75;
+  overflow-y: scroll;
 }
 
 .listHeading {
-    font-size: 1rem;
-    padding: 0.25rem 0.5em;
+  font-size: 1rem;
+  padding: 0.25rem 0.5em;
 }
 
 .listItem {
-    font-size: 0.8rem;
-    padding: 0.25rem 0.5rem;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
-    color:#474747;
+  font-size: 0.8rem;
+  padding: 0.25rem 0.5rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  color: #474747;
 }
 
 .listItem:hover {
-    background-color: rgb(233, 201, 23);
+  background-color: rgb(233, 201, 23);
 }
 
 .productHeading {
-    text-align: start;
-    font-size: 1rem;
-    padding: 0.25rem 0.5em;
+  text-align: start;
+  font-size: 1rem;
+  padding: 0.25rem 0.5em;
 }
 
 .productList {
-    display: grid;
-    grid-gap: 1rem;
-    padding: 0.5rem;
-    grid-template-columns: repeat(1, 180px);
+  display: grid;
+  grid-gap: 1rem;
+  padding: 0.5rem;
+  grid-template-columns: repeat(1, 180px);
 }
 
 .button {
-    font-size: 1rem;
-    background-color: rgb(233, 201, 23);
-    padding: 0.75rem 3rem;
-    margin: 0.5rem auto;
-    cursor: pointer;
+  font-size: 1rem;
+  background-color: rgb(233, 201, 23);
+  padding: 0.75rem 3rem;
+  margin: 0.5rem auto;
+  cursor: pointer;
 }
 
 .errorContainer {
-    width: inherit;
-    height: inherit;
-    max-width: 800px;
-    max-height: 600px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #f0f0f0;
-    font-size: 1rem;
+  width: inherit;
+  height: inherit;
+  max-width: 800px;
+  max-height: 600px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f0f0f0;
+  font-size: 1rem;
 }
 
 @media screen and (min-width: 480px) {
-    .productList {
-        grid-template-columns: repeat(2, 180px);
-    }
+  .productList {
+    grid-template-columns: repeat(2, 180px);
+  }
 }
 
 @media screen and (min-width: 1024px) {
-    .rightContainer {
-        overflow-y: hidden;
-    }
-    
-    .productList {
-        grid-template-columns: repeat(3, 180px);
-    }
+  .rightContainer {
+    overflow-y: hidden;
+  }
+
+  .productList {
+    grid-template-columns: repeat(3, 180px);
+  }
 }
