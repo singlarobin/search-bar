@@ -26,7 +26,7 @@
 
 .price {
     display: flex;
-    justify-content: start;
+    justify-content: flex-start;
     font-size: 0.8rem;
     align-items: baseline;
 }

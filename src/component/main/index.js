@@ -31,7 +31,6 @@ const Main = () => {
         }
         else {
             let json = await response.json();
-            console.log(json);
             setTopSuggestions(json.suggestions);
             setTopCollections(json.sfacets?.collectionname);
             setResults(json.results);
