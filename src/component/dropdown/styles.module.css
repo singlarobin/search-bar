@@ -1,11 +1,20 @@
-.container {
+.wrapper {
     width: 80vw;
     max-width: 800px;
-    padding: 0.5rem;
+    height: 60vh;
+    max-height: 600px;
     margin: 0rem auto;
+    border-radius: 0.5rem;
+}
+
+.container {
+    width: inherit;
+    height: inherit;
+    max-width: 800px;
+    max-height: 600px;
+    padding: 0.5rem;
     display: flex;
     background-color: #f0f0f0;
-    border-radius: 0.5rem;
 }
 
 .leftContainer {
@@ -54,4 +63,16 @@
     padding: 0.75rem 3rem;
     margin: 0.5rem auto;
     cursor: pointer;
+}
+
+.errorContainer {
+    width: inherit;
+    height: inherit;
+    max-width: 800px;
+    max-height: 600px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f0f0;
+    font-size: 1rem;
 }

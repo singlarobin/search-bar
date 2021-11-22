@@ -3,7 +3,6 @@ import Search from '../search';
 import classes from './style.module.css';
 import { URL } from '../../utils/constant';
 import DropDown from '../dropdown';
-import { isEmptyString, isEmptyObject } from '../../utils';
 
 const Main = () => {
     const [searchInput, setSearchInput] = useState('');
@@ -13,12 +12,14 @@ const Main = () => {
     const [results, setResults] = useState([]);
     const [product, setProduct] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
-
+    const [isOpen, setIsOpen] = useState(false);
 
     const handleSearchInput = value => {
         setSearchInput(value);
         debounce(actualApiCall)(value);
     }
+
+    const handleDropdownOpen = () => setIsOpen(false);
 
     const actualApiCall = async (searchValue) => {
         const params = '&size=6&suggestions=1&maxSuggestions=6';
@@ -30,11 +31,13 @@ const Main = () => {
         }
         else {
             let json = await response.json();
+            console.log(json);
             setTopSuggestions(json.suggestions);
             setTopCollections(json.sfacets?.collectionname);
             setResults(json.results);
             setProduct(json.suggestions.length !== 0 ? json.suggestions[0].suggestion : '');
             setErrorMessage(json.results.length === 0 ? 'Not Found' : '');
+            setIsOpen(true);
         }
     };
 
@@ -64,16 +67,16 @@ const Main = () => {
             let json = await response.json();
             setResults(json.results);
             setErrorMessage('');
+            setIsOpen(true);
         }
     }
 
     return <div className={classes.container} >
         <Search inputValue={searchInput} handleInputChange={handleSearchInput} />
-        {isEmptyString(errorMessage) ?
-            !isEmptyObject(results) && results.length !== 0 ? <DropDown suggestions={topSuggestions} collections={topCollections}
-                results={results} product={product} handleProductChange={handleProductChange} />
-                : null
-            : <div className={classes.errorContainer}>{errorMessage}</div>}
+        {isOpen === true ? <DropDown suggestions={topSuggestions} collections={topCollections}
+            results={results} product={product} handleProductChange={handleProductChange} handleOpen={handleDropdownOpen} errorMessage={errorMessage} />
+            : null
+        }
     </div>;
 };
 
